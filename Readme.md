@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Владимир Садовников](https://up.htmlacademy.ru/javascript/19/user/440155).
-* Наставник: `Неизвестно`.
+* Наставник: `Кексобот`.
 
 ---
 
