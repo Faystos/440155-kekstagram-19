@@ -2,10 +2,13 @@
 
 var blockPhotoTemp = document.querySelector('#picture').content.querySelector('.picture');
 var blockPictures = document.querySelector('.pictures');
+document.querySelector('.big-picture').classList.remove('hidden');
+document.body.classList.add('modal-open');
+createPhotoItems();
 
-var getRandomInt = function (min, max) {
+function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 function createObjPhoto() {
   var objPhoto = {};
@@ -28,7 +31,7 @@ function createObjPhoto() {
   ];
 
   for (var i = 1; i < 26; i++) {
-    var avatar = 'photos/' + i + '.jpg';
+    var avatar = 'img/avatar-' + i + '.svg';
     var comment = comments[Math.floor(Math.random() * comments.length)];
     var name = names[Math.floor(Math.random() * names.length)];
 
@@ -43,19 +46,30 @@ function createObjPhoto() {
 }
 
 function createPhotoItems() {
-  var photos = createObjPhoto();
-
+  var obPhotos = createObjPhoto();
   for (var i = 0; i < 25; i++) {
     var photoItems = blockPhotoTemp.cloneNode(true);
     var pictureComments = photoItems.querySelector('.picture__comments');
     var pictureLikes = photoItems.querySelector('.picture__likes');
     var photoItemImg = photoItems.querySelector('.picture__img');
-    photoItemImg.src = photos[i].avatar;
+    photoItemImg.src = 'photos/' + (i + 1) + '.jpg';
     pictureComments.textContent = getRandomInt(1, 6);
     pictureLikes.textContent = getRandomInt(15, 200);
     blockPictures.appendChild(photoItems);
   }
+  openBigPicture(obPhotos);
 }
 
-createPhotoItems();
+function openBigPicture(photos) {
+  var socialPictures = document.querySelectorAll('.social__comments .social__picture');
+  var socialComentText = document.querySelectorAll('.social__comments .social__text');
 
+  socialPictures.forEach(function (el) {
+    el.src = photos[getRandomInt(0, 5)].avatar;
+    el.alt = photos[getRandomInt(0, 5)].name;
+  });
+
+  socialComentText.forEach(function (el) {
+    el.textContent = photos[getRandomInt(0, 5)].comment;
+  });
+}
