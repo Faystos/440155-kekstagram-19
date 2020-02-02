@@ -1,10 +1,27 @@
 'use strict';
 
+var ESC = 27;
 var blockPhotoTemp = document.querySelector('#picture').content.querySelector('.picture');
 var blockPictures = document.querySelector('.pictures');
-document.querySelector('.big-picture').classList.remove('hidden');
+// document.querySelector('.big-picture').classList.remove('hidden');
 document.body.classList.add('modal-open');
 createPhotoItems();
+
+// ***************************************
+var uploadFile = document.querySelector('#upload-file');
+var imgUploadOverlay = document.querySelector('.img-upload__overlay');
+var btnUploadCancel = document.querySelector('#upload-cancel');
+
+uploadFile.addEventListener('change', openImgUploadOverlay);
+btnUploadCancel.addEventListener('click', closeImgUploadOverlay);
+
+document.addEventListener('keydown', closeBtnImgUploadOverlay);
+// ***************************************
+var pinFilter = document.querySelector('.effect-level__pin');
+var scaleControlValue = document.querySelector('.scale__control--value');
+var scaleControlValueStart = scaleControlValue.value;
+var effectsRadio = document.querySelectorAll('.effects__radio');
+// ***************************************
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -72,4 +89,45 @@ function openBigPicture(photos) {
   socialComentText.forEach(function (el) {
     el.textContent = photos[getRandomInt(0, 5)].comment;
   });
+}
+
+// работа с загрузкой фото;
+function closeImgUploadOverlay(evt) {
+  evt.preventDefault();
+  imgUploadOverlay.classList.add('hidden');
+  uploadFile.value = '';
+}
+
+function openImgUploadOverlay(evt) {
+  evt.preventDefault();
+  imgUploadOverlay.classList.remove('hidden');
+}
+
+function closeBtnImgUploadOverlay(evt) {
+  if (imgUploadOverlay.classList.contains('hidden')) {
+    return;
+  } else {
+    if (evt.keyCode === ESC) {
+      imgUploadOverlay.classList.add('hidden');
+      uploadFile.value = '';
+    }
+  }
+}
+
+// расчет пропорции ползунка.
+pinFilter.addEventListener('mouseup', handlerMouseUp);
+
+effectsRadio.forEach(function (el) {
+  el.addEventListener('change', function () {
+    scaleControlValue.value = scaleControlValueStart;
+  });
+});
+
+
+function handlerMouseUp() {
+  var fullPercent = 100;
+  var effectLevelLine = document.querySelector('.effect-level__line');
+  var effectLevelDepth = document.querySelector('.effect-level__depth');
+  var proportion = Math.floor((effectLevelDepth.offsetWidth / effectLevelLine.offsetWidth) * fullPercent);
+  scaleControlValue.value = proportion + '%';
 }
