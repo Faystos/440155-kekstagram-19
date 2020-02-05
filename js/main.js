@@ -131,3 +131,59 @@ function handlerMouseUp() {
   var proportion = Math.floor((effectLevelDepth.offsetWidth / effectLevelLine.offsetWidth) * fullPercent);
   scaleControlValue.value = proportion + '%';
 }
+
+
+// работа с формой
+var form = document.querySelector('#upload-select-image');
+var hashTagsInp = document.querySelector('.text__hashtags');
+var btnSubmit = document.querySelector('.img-upload__submit');
+
+btnSubmit.addEventListener('click', handlerBtnSubmit);
+
+hashTagsInp.addEventListener('input', function () {
+  hashTagsInp.setСustomValidity('');
+});
+
+// Функция валидации
+function customValidityTag(hTag) {
+  if (hTag[0] !== '#') {
+    hashTagsInp.setCustomValidity('начни писать текст с #!');
+    return false;
+  } else if (hTag.length < 2) {
+    hashTagsInp.setCustomValidity('Не хватает символов!');
+    return false;
+  } else if (hTag.length > 20) {
+    hashTagsInp.setCustomValidity('Слишком много символов');
+    return false;
+  } else if (hTag.indexOf('#', 1) > 0) {
+    hashTagsInp.setCustomValidity('Слитные хештеги, разделите пробелом!');
+    return false;
+  }
+  return true;
+}
+
+// Функция субмита формы
+function handlerBtnSubmit(evt) {
+  if (hashTagsInp.value !== '') {
+    var hTagArr = hashTagsInp.value.toLowerCase().split(' ');
+    for (var i = 0; i < hTagArr.length; i++) {
+      var alidityTag = customValidityTag(hTagArr[i]);
+      if (!alidityTag) {
+        break;
+      }
+      var nextTagPosition = i++;
+      if (hTagArr.indexOf(hTagArr[i], nextTagPosition) > 0) {
+        hashTagsInp.setСustomValidity('Повторение хештегов не приемлемо');
+        break;
+      }
+    }
+    if (hTagArr.length > 5) {
+      hashTagsInp.setСustomValidity('Не бошьше 5 хештегов');
+    }
+  }
+  if (!hashTagsInp.validationMessage) {
+    evt.preventDefault();       
+    console.log('письмо ушло');
+  }
+}
+
