@@ -134,56 +134,64 @@ function handlerMouseUp() {
 
 
 // работа с формой
-var form = document.querySelector('#upload-select-image');
-var hashTagsInp = document.querySelector('.text__hashtags');
-var btnSubmit = document.querySelector('.img-upload__submit');
+var formImgUpload = document.querySelector('.img-upload__form');
+var hTagsInp = document.querySelector('.text__hashtags');
+var btnFormSubmit = document.querySelector('.img-upload__submit');
 
-btnSubmit.addEventListener('click', handlerBtnSubmit);
+var hTagOption = {
+  VALUE_START: 0,
+  VALUE_MAX: 20,
+  VALUE_MIN: 2,
+  MAX_HTAGS: 5,
+  HTAG_SPACE: 1
+};
 
-hashTagsInp.addEventListener('input', function () {
-  hashTagsInp.setСustomValidity('');
+btnFormSubmit.addEventListener('click', handlerBtnSubmit);
+
+hTagsInp.addEventListener('input', function () {
+  hTagsInp.setCustomValidity('');
 });
 
-// Функция валидации
-function customValidityTag(hTag) {
-  if (hTag[0] !== '#') {
-    hashTagsInp.setCustomValidity('начни писать текст с #!');
+// Функция валидации поля хеш-тега.
+function validityInpHtag(hTag) {
+  if (hTag[hTagOption.VALUE_START] !== '#') {
+    hTagsInp.setCustomValidity('начни с #!');
     return false;
-  } else if (hTag.length < 2) {
-    hashTagsInp.setCustomValidity('Не хватает символов!');
+  } else if (hTag.length < hTagOption.VALUE_MIN) {
+    hTagsInp.setCustomValidity('Слишком короткий хеш-тег!');
     return false;
-  } else if (hTag.length > 20) {
-    hashTagsInp.setCustomValidity('Слишком много символов');
+  } else if (hTag.length > hTagOption.VALUE_MAX) {
+    hTagsInp.setCustomValidity('Слишком длинный хеш-тег!');
     return false;
-  } else if (hTag.indexOf('#', 1) > 0) {
-    hashTagsInp.setCustomValidity('Слитные хештеги, разделите пробелом!');
+  } else if (hTag.indexOf('#', hTagOption.HTAG_SPACE) > hTagOption.VALUE_START) {
+    hTagsInp.setCustomValidity('Слитные хештеги, разделите пробелом!');
     return false;
   }
   return true;
 }
 
-// Функция субмита формы
+// Функция отправки валидной формы.
 function handlerBtnSubmit(evt) {
-  if (hashTagsInp.value !== '') {
-    var hTagArr = hashTagsInp.value.toLowerCase().split(' ');
+  if (hTagsInp.value !== '') {
+    var hTagArr = hTagsInp.value.toLowerCase().split(' ');
     for (var i = 0; i < hTagArr.length; i++) {
-      var alidityTag = customValidityTag(hTagArr[i]);
+      var alidityTag = validityInpHtag(hTagArr[i]);
       if (!alidityTag) {
         break;
       }
       var nextTagPosition = i++;
       if (hTagArr.indexOf(hTagArr[i], nextTagPosition) > 0) {
-        hashTagsInp.setСustomValidity('Повторение хештегов не приемлемо');
+        hTagsInp.setCustomValidity('Одинаковые хеш-теги не приемлемы!');
         break;
       }
     }
     if (hTagArr.length > 5) {
-      hashTagsInp.setСustomValidity('Не бошьше 5 хештегов');
+      hTagsInp.setCustomValidity('Слишком много хеш-тегов!');
     }
   }
-  if (!hashTagsInp.validationMessage) {
-    evt.preventDefault();       
-    console.log('письмо ушло');
+  if (!hTagsInp.validationMessage) {
+    evt.preventDefault();
+    formImgUpload.submit();
   }
 }
 
