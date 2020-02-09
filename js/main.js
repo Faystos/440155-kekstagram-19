@@ -1,12 +1,13 @@
 'use strict';
 
-var ESC = 27;
-var blockPhotoTemp = document.querySelector('#picture').content.querySelector('.picture');
-var blockPictures = document.querySelector('.pictures');
+// var ESC = 27;
+// var blockPhotoTemp = document.querySelector('#picture').content.querySelector('.picture');
+// var blockPictures = document.querySelector('.pictures');
 
-createPhotoItems();
+// createPhotoItems();
 
 // Обработка открытия блока с большой фото.
+/*
 var linkMainPhotos = document.querySelectorAll('.picture');
 var blockBigPhoto = document.querySelector('.big-picture');
 var pictureCancelBtn = document.querySelector('.big-picture__cancel');
@@ -50,6 +51,8 @@ function openBlockBigPhoto(aim) {
   document.querySelector('.comments-loader').classList.add('hidden');
 }
 
+*/
+
 // ***************************************
 
 var uploadFile = document.querySelector('#upload-file');
@@ -71,13 +74,15 @@ var scaleControlValueStart = scaleControlValue.value;
 var effectsRadio = document.querySelectorAll('.effects__radio');
 
 // ***************************************
+/*
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+*/
 
 // ***************************************
-
+/*
 function createObjPhoto() {
   var objPhoto = {};
   var photos = [];
@@ -113,7 +118,9 @@ function createObjPhoto() {
   return photos;
 }
 
-
+*/
+// ****************************************************************************
+/*
 function createPhotoItems() {
   for (var i = 0; i < 25; i++) {
     var photoItems = blockPhotoTemp.cloneNode(true);
@@ -126,6 +133,8 @@ function createPhotoItems() {
     blockPictures.appendChild(photoItems);
   }
 }
+*/
+/*
 
 function displayingСomments(photos) {
   socialPictures.forEach(function (el) {
@@ -137,6 +146,9 @@ function displayingСomments(photos) {
     el.textContent = photos[getRandomInt(0, 5)].comment;
   });
 }
+*/
+
+//  ****************************************************
 
 // работа с загрузкой фото;
 function closeImgUploadOverlay(evt) {
