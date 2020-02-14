@@ -5,9 +5,10 @@
   var blockBigPhoto = document.querySelector('.big-picture');
   var pictureCancelBtn = document.querySelector('.big-picture__cancel');
   var socialPictures = document.querySelectorAll('.social__comments .social__picture');
-  var socialComentText = document.querySelectorAll('.social__comments .social__text'); 
+  var socialComentText = document.querySelectorAll('.social__comments .social__text');
+  pictureCancelBtn.addEventListener('click', closeBlockBigPhoto);
+  document.addEventListener('keydown', closeBtnBlockBigPhoto);
 
-  
   linkMainPhotos.forEach(function (el) {
     el.addEventListener('click', handlerLinkMainPhoto);
 
@@ -15,7 +16,7 @@
       if (evt.target !== el) {
         return;
       }
-      if (evt.keyCode === 13) {
+      if (evt.keyCode === window.itemPhotoData.ENTER) {
         evt.preventDefault();
         openBlockBigPhoto(evt.target);
       }
@@ -55,5 +56,29 @@
       el.textContent = photos[window.itemPhotoData.getRandomInt(0, 5)].comment;
     });
   }
-  
+
+  function closeBlockBigPhoto(evt) {
+    evt.preventDefault();
+    if (!blockBigPhoto.classList.contains('hidden')) {
+      closeBigPhoto();
+    }
+  }
+
+  function closeBigPhoto() {
+    if (document.querySelector('.social__footer-text') === document.activeElement) {
+      return;
+    }
+    blockBigPhoto.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+  }
+
+  function closeBtnBlockBigPhoto(evt) {
+    if (blockBigPhoto.classList.contains('hidden')) {
+      return;
+    } else {
+      if (evt.keyCode === window.itemPhotoData.ESC) {
+        closeBigPhoto();
+      }
+    }
+  }
 })();

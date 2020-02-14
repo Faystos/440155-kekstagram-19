@@ -61,10 +61,10 @@ var btnUploadCancel = document.querySelector('#upload-cancel');
 
 uploadFile.addEventListener('change', openImgUploadOverlay);
 btnUploadCancel.addEventListener('click', closeImgUploadOverlay);
-pictureCancelBtn.addEventListener('click', closeBlockBigPhoto);
+// pictureCancelBtn.addEventListener('click', closeBlockBigPhoto);
 
 document.addEventListener('keydown', closeBtnImgUploadOverlay);
-document.addEventListener('keydown', closeBtnBlockBigPhoto);
+// document.addEventListener('keydown', closeBtnBlockBigPhoto);
 
 // ***************************************
 
@@ -156,12 +156,14 @@ function closeImgUploadOverlay(evt) {
   closeUploadOverlay();
 }
 
+/*
 function closeBlockBigPhoto(evt) {
   evt.preventDefault();
   if (!blockBigPhoto.classList.contains('hidden')) {
     closeBigPhoto();
   }
 }
+*/
 
 function openImgUploadOverlay(evt) {
   evt.preventDefault();
@@ -178,6 +180,7 @@ function closeBtnImgUploadOverlay(evt) {
   }
 }
 
+/*
 function closeBtnBlockBigPhoto(evt) {
   if (blockBigPhoto.classList.contains('hidden')) {
     return;
@@ -187,12 +190,14 @@ function closeBtnBlockBigPhoto(evt) {
     }
   }
 }
+*/
 
 function closeUploadOverlay() {
   imgUploadOverlay.classList.add('hidden');
   uploadFile.value = '';
 }
 
+/*
 function closeBigPhoto() {
   if (document.querySelector('.social__footer-text') === document.activeElement) {
     return;
@@ -200,6 +205,7 @@ function closeBigPhoto() {
   blockBigPhoto.classList.add('hidden');
   document.body.classList.remove('modal-open');
 }
+*/
 
 // Расчет пропорции ползунка.
 pinFilter.addEventListener('mouseup', handlerMouseUp);

@@ -4,11 +4,13 @@
 
   var objItemPhoto = createObjPhoto();
   var ESC = 27;
+  var ENTER = 13;
 
   window.itemPhotoData = {
     objItemPhoto: objItemPhoto,
     getRandomInt: getRandomInt,
-    ESC: ESC
+    ESC: ESC,
+    ENTER: ENTER
   };
 
   function getRandomInt(min, max) {
