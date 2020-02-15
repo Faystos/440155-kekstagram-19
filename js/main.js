@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // var ESC = 27;
 // var blockPhotoTemp = document.querySelector('#picture').content.querySelector('.picture');
@@ -55,24 +55,24 @@ function openBlockBigPhoto(aim) {
 
 // ***************************************
 
-var uploadFile = document.querySelector('#upload-file');
-var imgUploadOverlay = document.querySelector('.img-upload__overlay');
-var btnUploadCancel = document.querySelector('#upload-cancel');
+// var uploadFile = document.querySelector('#upload-file');
+// var imgUploadOverlay = document.querySelector('.img-upload__overlay');
+// var btnUploadCancel = document.querySelector('#upload-cancel');
 
-uploadFile.addEventListener('change', openImgUploadOverlay);
-btnUploadCancel.addEventListener('click', closeImgUploadOverlay);
+// uploadFile.addEventListener('change', openImgUploadOverlay);
+// btnUploadCancel.addEventListener('click', closeImgUploadOverlay);
 // pictureCancelBtn.addEventListener('click', closeBlockBigPhoto);
 
-document.addEventListener('keydown', closeBtnImgUploadOverlay);
+// document.addEventListener('keydown', closeBtnImgUploadOverlay);
 // document.addEventListener('keydown', closeBtnBlockBigPhoto);
 
 // ***************************************
-
+/*
 var pinFilter = document.querySelector('.effect-level__pin');
 var scaleControlValue = document.querySelector('.scale__control--value');
 var scaleControlValueStart = scaleControlValue.value;
 var effectsRadio = document.querySelectorAll('.effects__radio');
-
+*/
 // ***************************************
 /*
 
@@ -151,10 +151,12 @@ function displayingСomments(photos) {
 //  ****************************************************
 
 // работа с загрузкой фото;
+/*
 function closeImgUploadOverlay(evt) {
   evt.preventDefault();
   closeUploadOverlay();
 }
+*/
 
 /*
 function closeBlockBigPhoto(evt) {
@@ -164,12 +166,13 @@ function closeBlockBigPhoto(evt) {
   }
 }
 */
-
+/*
 function openImgUploadOverlay(evt) {
   evt.preventDefault();
   imgUploadOverlay.classList.remove('hidden');
 }
-
+*/
+/*
 function closeBtnImgUploadOverlay(evt) {
   if (imgUploadOverlay.classList.contains('hidden')) {
     return;
@@ -179,6 +182,7 @@ function closeBtnImgUploadOverlay(evt) {
     }
   }
 }
+*/
 
 /*
 function closeBtnBlockBigPhoto(evt) {
@@ -191,11 +195,12 @@ function closeBtnBlockBigPhoto(evt) {
   }
 }
 */
-
+/*
 function closeUploadOverlay() {
   imgUploadOverlay.classList.add('hidden');
   uploadFile.value = '';
 }
+*/
 
 /*
 function closeBigPhoto() {
@@ -208,14 +213,15 @@ function closeBigPhoto() {
 */
 
 // Расчет пропорции ползунка.
-pinFilter.addEventListener('mouseup', handlerMouseUp);
-
+// pinFilter.addEventListener('mouseup', handlerMouseUp);
+/*
 effectsRadio.forEach(function (el) {
   el.addEventListener('change', function () {
     scaleControlValue.value = scaleControlValueStart;
   });
 });
-
+*/
+/*
 function handlerMouseUp() {
   var fullPercent = 100;
   var effectLevelLine = document.querySelector('.effect-level__line');
@@ -223,8 +229,9 @@ function handlerMouseUp() {
   var proportion = Math.floor((effectLevelDepth.offsetWidth / effectLevelLine.offsetWidth) * fullPercent);
   scaleControlValue.value = proportion + '%';
 }
-
+*/
 // работа с формой
+/*
 var formImgUpload = document.querySelector('.img-upload__form');
 var hTagsInp = document.querySelector('.text__hashtags');
 var btnFormSubmit = document.querySelector('.img-upload__submit');
@@ -236,14 +243,17 @@ var hTagOption = {
   MAX_HTAGS: 5,
   HTAG_SPACE: 1
 };
+*/
 
-btnFormSubmit.addEventListener('click', handlerBtnSubmit);
-
+// btnFormSubmit.addEventListener('click', handlerBtnSubmit);
+/*
 hTagsInp.addEventListener('input', function () {
   hTagsInp.setCustomValidity('');
 });
+*/
 
 // Функция валидации поля хеш-тега.
+/*
 function validityInpHtag(hTag) {
   if (hTag[hTagOption.VALUE_START] !== '#') {
     hTagsInp.setCustomValidity('начни с #!');
@@ -260,8 +270,10 @@ function validityInpHtag(hTag) {
   }
   return true;
 }
+*/
 
 // Функция отправки валидной формы.
+/*
 function handlerBtnSubmit(evt) {
   if (hTagsInp.value !== '') {
     var hTagArr = hTagsInp.value.toLowerCase().split(' ');
@@ -285,4 +297,4 @@ function handlerBtnSubmit(evt) {
     formImgUpload.submit();
   }
 }
-
+*/
