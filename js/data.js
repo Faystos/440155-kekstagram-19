@@ -5,12 +5,20 @@
   var objItemPhoto = createObjPhoto();
   var ESC = 27;
   var ENTER = 13;
+  var START_POSITION = 0;
+  var WIDTH_EFFECT_LEVEL_LINE = 453;
+  var FULL_PERCENT = 100;
+  var QUARTER_PERCENT = 20;
 
   window.itemPhotoData = {
     objItemPhoto: objItemPhoto,
     getRandomInt: getRandomInt,
     ESC: ESC,
-    ENTER: ENTER
+    ENTER: ENTER,
+    START_POSITION: START_POSITION,
+    WIDTH_EFFECT_LEVEL_LINE: WIDTH_EFFECT_LEVEL_LINE,
+    FULL_PERCENT: FULL_PERCENT,
+    QUARTER_PERCENT: QUARTER_PERCENT
   };
 
   function getRandomInt(min, max) {
