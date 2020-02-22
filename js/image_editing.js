@@ -2,45 +2,56 @@
 
 (function () {
   var pinFilter = document.querySelector('.effect-level__pin');
-  var pinDefaultPosition = (window.itemPhotoData.WIDTH_EFFECT_LEVEL_LINE / window.itemPhotoData.FULL_PERCENT) *  window.itemPhotoData.QUARTER_PERCENT;
+  var inpEffectNone = document.querySelector('#effect-none');
+  var blockEffectLevel = document.querySelector('.img-upload__effect-level');
+  var pinMaxPosition = window.itemPhotoData.WIDTH_EFFECT_LEVEL_LINE;
   var depthFilter = document.querySelector('.effect-level__depth');
-  var scaleControlValue = document.querySelector('.scale__control--value');
-  var scaleControlValueStart = scaleControlValue.value;
   var effectsRadio = document.querySelectorAll('.effects__radio');
-  var preview = document.querySelector('.img-upload__preview');
+  var previewPhoto = document.querySelector('.img-upload__preview');
+  var effectLevelValue = document.querySelector('.effect-level__value');
   var effectFilter = {
     none: {
+      class: 'effects__preview--none',
       style: 'none',
       max: 0,
       min: 0
     },
     chrome: {
+      class: 'effects__preview--chrome',
       style: 'grayscale',
       max: 1,
       min: 0
     },
     sepia: {
+      class: 'effects__preview--sepia',
       style: 'sepia',
       max: 1,
       min: 0
     },
     marvin: {
+      class: 'effects__preview--marvin',
       style: 'invert',
       max: 100,
       min: 0,
       postFix: '%'
     },
     phobos: {
+      class: 'effects__preview--phobos',
       style: 'blur',
       max: 3,
       min: 0,
       postFix: 'px'
     },
     heat: {
+      class: 'effects__preview--heat',
       style: 'brightness',
       max: 3,
       min: 1
     }
+  };
+
+  window.defaultPositionBlockPreview = {
+    defaultBlockPreview: defaultBlockPreview
   };
 
   pinFilter.addEventListener('mousedown', handlerMouseDown);
@@ -69,7 +80,6 @@
 
     function handlerMouseUp(upEvt) {
       upEvt.preventDefault();
-      calculationProcent();
       document.removeEventListener('mousemove', handlerMouseMove);
       document.removeEventListener('mouseup', handlerMouseUp);
     }
@@ -77,22 +87,16 @@
 
   effectsRadio.forEach(function (el) {
     el.addEventListener('change', function () {
-      scaleControlValue.value = scaleControlValueStart;
-      changingSliderPosition(pinDefaultPosition);
       if (el.value === 'none') {
-        preview.removeAttribute('style');
+        previewPhoto.removeAttribute('style');
       }
-      proportionShiftFilterEffect(effectFilter[el.value].max, effectFilter[el.value].min, effectFilter[el.value].style, pinFilter.offsetLeft, effectFilter[el.value].postFix);
+      changingSliderPosition(pinMaxPosition);
+      previewPhoto.classList = 'img-upload__preview';
+      previewPhoto.classList.add(effectFilter[el.value].class);
+      proportionShiftFilterEffect(effectFilter[el.value].max, effectFilter[el.value].min, effectFilter[el.value].style, pinMaxPosition, effectFilter[el.value].postFix);
+      showBlockEffectLevel(el);
     });
   });
-
-  function calculationProcent() {
-    var fullPercent = 100;
-    var effectLevelLine = document.querySelector('.effect-level__line');
-    var effectLevelDepth = document.querySelector('.effect-level__depth');
-    var proportion = Math.ceil((effectLevelDepth.offsetWidth / effectLevelLine.offsetWidth) * fullPercent);
-    scaleControlValue.value = proportion + '%';
-  }
 
   function changingSliderPosition(valuePosition) {
     pinFilter.style.left = valuePosition + 'px';
@@ -103,6 +107,24 @@
     var postFix = postFixFilter || '';
     var proportion = (max - min) * (position / 450) + min;
     var change = '' + filter + '(' + proportion + postFix + ')';
-    preview.style.filter = change;
+    previewPhoto.style.filter = change;
+    effectLevelValue.value = proportion;
+  }
+
+  function showBlockEffectLevel(el) {
+    if (el.value === 'none') {
+      blockEffectLevel.classList.add('hidden');
+    } else {
+      blockEffectLevel.classList.remove('hidden');
+    }
+  }
+
+  function defaultBlockPreview() {
+    changingSliderPosition(pinMaxPosition);
+    inpEffectNone.checked = 'checked';
+    previewPhoto.classList = 'img-upload__preview';
+    previewPhoto.removeAttribute('style');
+    previewPhoto.classList.add('hidden');
+    blockEffectLevel.classList.add('hidden');
   }
 })();
