@@ -64,7 +64,7 @@
 
     document.querySelector('main').appendChild(errorWindow);
 
-    window.addEventListener('keydown', function (evt) {
+    document.addEventListener('keydown', function (evt) {
       if (!document.querySelector('.error__inner')) {
         return;
       } else {
