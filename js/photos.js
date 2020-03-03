@@ -4,21 +4,6 @@
   var blockPictures = document.querySelector('.pictures');
   var blockPhotoTemp = document.querySelector('#picture').content.querySelector('.picture');
 
-
-  var getRequest = window.request.myRequest;
-  getRequest.getRequest('https://js.dump.academy/kekstagram/data', onResponse, onErr);
-
-
-  function onResponse(res) {
-    var arrPhotos = res.slice();
-    renderAllPhoto(arrPhotos);
-  }
-
-
-  function onErr() {
-    window.itemPhotoData.openErroreWindow();
-  }
-
   function createPhoto(arrEl) {
     var photoItems = blockPhotoTemp.cloneNode(true);
     var pictureComments = photoItems.querySelector('.picture__comments');
@@ -42,9 +27,9 @@
       fragmentPhoto.appendChild(photo);
     });
     blockPictures.appendChild(fragmentPhoto);
-
-
   }
+
+  window.renderPhotos = renderAllPhoto;
 
 })();
 
