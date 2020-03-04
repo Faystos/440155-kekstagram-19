@@ -14,23 +14,23 @@
     START_POSITION: START_POSITION,
     WIDTH_EFFECT_LEVEL_LINE: WIDTH_EFFECT_LEVEL_LINE,
     MAX_COMMENT: MAX_COMMENT,
-    openErroreWindow: openErroreWindow
+    openWindow: openWindow
   };
 
-  function openErroreWindow() {
-    var errorWindow = document.querySelector('#error').content.children[0].cloneNode(true);
-    document.querySelector('main').appendChild(errorWindow);
+  function openWindow(id) {
+    var blockWindow = document.querySelector('#' + id).content.children[0].cloneNode(true);
+    document.querySelector('main').appendChild(blockWindow);
     document.addEventListener('keydown', function (evt) {
-      if (!document.querySelector('.error__inner')) {
+      if (!document.querySelector('.' + id)) {
         return;
       } else {
         if (evt.keyCode === window.itemPhotoData.ESC) {
-          errorWindow.remove();
+          blockWindow.remove();
         }
       }
     });
-    errorWindow.addEventListener('click', function () {
-      errorWindow.remove();
+    blockWindow.addEventListener('click', function () {
+      blockWindow.remove();
     });
   }
 })();

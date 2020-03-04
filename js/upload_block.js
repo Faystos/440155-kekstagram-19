@@ -18,6 +18,7 @@
 
   function closeImgUploadOverlay(evt) {
     evt.preventDefault();
+    document.querySelector('.img-upload__form').reset();
     closeUploadOverlay();
   }
 
@@ -38,4 +39,8 @@
       }
     }
   }
+
+  window.blockUp = {
+    closeUploadOverlay: closeUploadOverlay
+  };
 })();

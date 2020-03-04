@@ -12,6 +12,6 @@
 
 
   function onErr() {
-    window.itemPhotoData.openErroreWindow();
+    window.itemPhotoData.openWindow('error');
   }
 })();
