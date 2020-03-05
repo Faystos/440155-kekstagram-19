@@ -7,6 +7,7 @@
   var START_POSITION = 0;
   var WIDTH_EFFECT_LEVEL_LINE = 453;
   var MAX_COMMENT = 5;
+  var defaultScale = 50;
 
   window.itemPhotoData = {
     ESC: ESC,
@@ -14,7 +15,8 @@
     START_POSITION: START_POSITION,
     WIDTH_EFFECT_LEVEL_LINE: WIDTH_EFFECT_LEVEL_LINE,
     MAX_COMMENT: MAX_COMMENT,
-    openWindow: openWindow
+    openWindow: openWindow,
+    defaultScale: defaultScale
   };
 
   function openWindow(id) {

@@ -9,6 +9,7 @@
   var effectsRadio = document.querySelectorAll('.effects__radio');
   var previewPhoto = document.querySelector('.img-upload__preview');
   var effectLevelValue = document.querySelector('.effect-level__value');
+  var scaleControlValue = document.querySelector('.scale__control--value');
   var effectFilter = {
     none: {
       class: 'effects__preview--none',
@@ -126,5 +127,8 @@
     previewPhoto.removeAttribute('style');
     previewPhoto.classList.add('hidden');
     blockEffectLevel.classList.add('hidden');
+    scaleControlValue.value = 50 + '%';
+    previewPhoto.style.transform = 'none';
+    window.itemPhotoData.defaultScale = 50;
   }
 })();

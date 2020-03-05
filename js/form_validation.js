@@ -56,16 +56,16 @@
     if (!hTagsInp.validationMessage) {
       evt.preventDefault();
       var formData = new FormData(formImgUpload);
-      req.postRequest('https://js.dump.academy/kekstagram', onRes, onErr, formData);
+      req.postRequest('https://js.dump.academy/kekstagram', onSuccessUpload, onErrorUpload, formData);
     }
   }
 
-  function onRes() {
+  function onSuccessUpload() {
     window.blockUp.closeUploadOverlay();
     window.itemPhotoData.openWindow('success');
   }
 
-  function onErr() {
+  function onErrorUpload() {
     window.blockUp.closeUploadOverlay();
     window.itemPhotoData.openWindow('error');
   }
