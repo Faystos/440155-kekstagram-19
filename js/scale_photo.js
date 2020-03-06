@@ -7,33 +7,43 @@
   var imgUploadPreview = document.querySelector('.img-upload__preview');
   var scaleParamentrs = {
     step: 25,
-    maxPos: 100,
-    minPos: 25,
+    maxPosition: 100,
+    minPosition: 25,
   };
 
 
   btnScaleControlBigger.addEventListener('click', function (evt) {
     evt.preventDefault();
-    if (parseInt(window.itemPhotoData.defaultScale, 10) >= scaleParamentrs.maxPos) {
-      return;
-    }
-
-    var scaleBigger = window.itemPhotoData.defaultScale += scaleParamentrs.step;
-    var transformScale = scaleBigger / 100;
-    scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
-    imgUploadPreview.style.transform = 'scale(' + transformScale + ')';
+    onСhangeScale('bigger');
   });
 
   btnScaleControlSmaller.addEventListener('click', function (evt) {
     evt.preventDefault();
-    if (window.itemPhotoData.defaultScale <= scaleParamentrs.minPos) {
-      return;
+    onСhangeScale('smaller');
+  });
+
+  function onСhangeScale(nameBtn) {
+    var scaleСhange = '';
+    var transformScale = '';
+    if (nameBtn === 'bigger') {
+      if (window.itemPhotoData.defaultScale >= scaleParamentrs.maxPosition) {
+        return;
+      }
+      scaleСhange = window.itemPhotoData.defaultScale += scaleParamentrs.step;
+      transformScale = scaleСhange / 100;
+      scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
+      imgUploadPreview.style.transform = 'scale(' + transformScale + ')';
     }
 
-    var scaleSmaller = window.itemPhotoData.defaultScale -= scaleParamentrs.step;
-    var transformScale = scaleSmaller / 100;
-    scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
-    imgUploadPreview.style.transform = 'scale(' + transformScale + ')';
-  });
+    if (nameBtn === 'smaller') {
+      if (window.itemPhotoData.defaultScale <= scaleParamentrs.minPosition) {
+        return;
+      }
+      scaleСhange = window.itemPhotoData.defaultScale -= scaleParamentrs.step;
+      transformScale = scaleСhange / 100;
+      scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
+      imgUploadPreview.style.transform = 'scale(' + transformScale + ')';
+    }
+  }
 
 })();
