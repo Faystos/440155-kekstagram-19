@@ -22,6 +22,7 @@
     bigPhoto.src = data.url;
     socialLikes.textContent = data.likes;
     photoDescr.textContent = data.description;
+
     displayingСomments(data, countStep);
 
     loadComm.addEventListener('click', handlerLoadComm);

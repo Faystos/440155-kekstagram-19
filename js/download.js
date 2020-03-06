@@ -2,16 +2,16 @@
 
 (function () {
   var getRequest = window.request.myRequest;
-  getRequest.getRequest('https://js.dump.academy/kekstagram/data', onResponse, onErr);
+  getRequest.getRequest('https://js.dump.academy/kekstagram/data', onSuccessResponse, onErrorResponse);
 
 
-  function onResponse(res) {
+  function onSuccessResponse(res) {
     var arrPhotos = res.slice();
     window.renderPhotos(arrPhotos);
   }
 
 
-  function onErr() {
-    window.itemPhotoData.openErroreWindow();
+  function onErrorResponse() {
+    window.itemPhotoData.openWindow('error');
   }
 })();
