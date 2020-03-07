@@ -11,6 +11,7 @@
   var arrData = [];
   var MAX_RANDOM_PHOTO = 10;
   var DEBOUNCE_INTERVAL = 500;
+  var TYPE_FILES = ['gif', 'jpg', 'jpeg', 'png'];
 
   window.itemPhotoData = {
     ESC: ESC,
@@ -22,7 +23,8 @@
     DEFAULT_SCALE: DEFAULT_SCALE,
     arrData: arrData,
     MAX_RANDOM_PHOTO: MAX_RANDOM_PHOTO,
-    DEBOUNCE_INTERVAL: DEBOUNCE_INTERVAL
+    DEBOUNCE_INTERVAL: DEBOUNCE_INTERVAL,
+    TYPE_FILES: TYPE_FILES
   };
 
   function openWindow(id) {
