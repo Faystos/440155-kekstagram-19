@@ -25,11 +25,7 @@
   btnFilter.forEach(function (el) {
     el.addEventListener('click', function (evt) {
       evt.preventDefault();
-      var arrPhotos = window.itemPhotoData.arrData.slice();
-      var activeBtn = evt.target;
-      onActiveBtn(activeBtn);
-      onDeleteElements('.picture');
-      onFilter(activeBtn.id, arrPhotos);
+      handlerFilter(evt);
     });
   });
 
@@ -50,5 +46,13 @@
     var arry = typeFilter[id](arr).slice();
     window.renderPhotos(arry);
   }
+
+  var handlerFilter = window.debounce(function (aim) {
+    var activeBtn = aim.target;
+    var arrPhotos = window.itemPhotoData.arrData.slice();
+    onActiveBtn(activeBtn);
+    onDeleteElements('.picture');
+    onFilter(activeBtn.id, arrPhotos);
+  });
 
 })();
