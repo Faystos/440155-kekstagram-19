@@ -8,6 +8,9 @@
   var WIDTH_EFFECT_LEVEL_LINE = 453;
   var MAX_COMMENT = 5;
   var defaultScale = 50;
+  var arrData = [];
+  var MAX_RANDOM_PHOTO = 10;
+  var DEBOUNCE_INTERVAL = 500;
 
   window.itemPhotoData = {
     ESC: ESC,
@@ -16,7 +19,10 @@
     WIDTH_EFFECT_LEVEL_LINE: WIDTH_EFFECT_LEVEL_LINE,
     MAX_COMMENT: MAX_COMMENT,
     openWindow: openWindow,
-    defaultScale: defaultScale
+    defaultScale: defaultScale,
+    arrData: arrData,
+    MAX_RANDOM_PHOTO: MAX_RANDOM_PHOTO,
+    DEBOUNCE_INTERVAL: DEBOUNCE_INTERVAL
   };
 
   function openWindow(id) {

@@ -6,8 +6,9 @@
 
 
   function onSuccessResponse(res) {
-    var arrPhotos = res.slice();
-    window.renderPhotos(arrPhotos);
+    window.itemPhotoData.arrData = res.slice();
+    window.renderPhotos(window.itemPhotoData.arrData);
+    document.querySelector('.img-filters').classList.remove('img-filters--inactive');
   }
 
 
