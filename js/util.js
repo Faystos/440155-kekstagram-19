@@ -7,7 +7,7 @@
   var START_POSITION = 0;
   var WIDTH_EFFECT_LEVEL_LINE = 453;
   var MAX_COMMENT = 5;
-  var defaultScale = 50;
+  var DEFAULT_SCALE = 100;
   var arrData = [];
   var MAX_RANDOM_PHOTO = 10;
   var DEBOUNCE_INTERVAL = 500;
@@ -19,7 +19,7 @@
     WIDTH_EFFECT_LEVEL_LINE: WIDTH_EFFECT_LEVEL_LINE,
     MAX_COMMENT: MAX_COMMENT,
     openWindow: openWindow,
-    defaultScale: defaultScale,
+    DEFAULT_SCALE: DEFAULT_SCALE,
     arrData: arrData,
     MAX_RANDOM_PHOTO: MAX_RANDOM_PHOTO,
     DEBOUNCE_INTERVAL: DEBOUNCE_INTERVAL

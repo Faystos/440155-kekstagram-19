@@ -30,9 +30,7 @@
         return;
       }
       scaleСhange = window.itemPhotoData.defaultScale += scaleParamentrs.step;
-      transformScale = scaleСhange / 100;
-      scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
-      imgUploadPreview.style.transform = 'scale(' + transformScale + ')';
+      onTransformScale(transformScale, scaleСhange);
     }
 
     if (nameBtn === 'smaller') {
@@ -40,10 +38,14 @@
         return;
       }
       scaleСhange = window.itemPhotoData.defaultScale -= scaleParamentrs.step;
-      transformScale = scaleСhange / 100;
-      scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
-      imgUploadPreview.style.transform = 'scale(' + transformScale + ')';
+      onTransformScale(transformScale, scaleСhange);
     }
+  }
+
+  function onTransformScale(transform, change) {
+    transform = change / 100;
+    scaleControlValue.value = window.itemPhotoData.defaultScale + '%';
+    imgUploadPreview.style.transform = 'scale(' + transform + ')';
   }
 
 })();
