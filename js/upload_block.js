@@ -15,7 +15,7 @@
     evt.preventDefault();
     imgUploadOverlay.classList.remove('hidden');
     window.defaultPositionBlockPreview.defaultBlockPreview();
-    window.onuploadPhoto(uploadFile);
+    window.onUploadPhoto(uploadFile);
   }
 
   function closeImgUploadOverlay(evt) {

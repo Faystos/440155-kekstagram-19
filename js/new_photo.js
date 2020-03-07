@@ -4,7 +4,7 @@
   var photo = document.querySelector('.img-upload__preview img');
   var effectList = document.querySelectorAll('.effects__preview');
 
-  function onuploadPhoto(chooserPhoto) {
+  function onUploadPhoto(chooserPhoto) {
     var file = chooserPhoto.files[0];
     uploadNewPhoto(file);
   }
@@ -30,5 +30,5 @@
     });
   }
 
-  window.onuploadPhoto = onuploadPhoto;
+  window.onUploadPhoto = onUploadPhoto;
 })();
